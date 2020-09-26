@@ -12,3 +12,5 @@ To run this code you need :
         https://dyclassroom.com/howto-mac/how-to-install-rabbitmq-on-mac-using-homebrew
 
 4- Tensorflow library version : 2.3.0 
+5- Run python recieve.py
+6- And finall run python main.py
