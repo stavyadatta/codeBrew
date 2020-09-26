@@ -48,7 +48,7 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
         
     return (locs, preds)
 
-def mask_detection_video(input_video_path, output_video_path, face_detector="face_detector", model="mask_detector.model"):
+def mask_detection_video(input_video_path, output_video_path, face_detector="face_detector", model="mask_detector_kaggle.model"):
     print("[INFO] loading face detector model")
     prototxtPath = os.path.sep.join([face_detector, "deploy.prototxt"])
     weightsPath = os.path.sep.join([face_detector,
@@ -111,6 +111,7 @@ def mask_detection_video(input_video_path, output_video_path, face_detector="fac
         # writer.write(frame)
         
         cv2.imwrite("output_videos/test" + str(i) + ".jpg", frame)
+        
         i+=1
         
     # writer.release()

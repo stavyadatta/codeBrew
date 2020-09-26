@@ -4,3 +4,4 @@ examples/
 pyimagesearch/
 train_mask_detector1.py
 output_videos/
+new_dataset/

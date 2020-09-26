@@ -28,10 +28,10 @@ import os
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--dataset", required=True,
 	help="path to input dataset")
-ap.add_argument("-p", "--plot", type=str, default="plot_keras.png",
+ap.add_argument("-p", "--plot", type=str, default="plot_keras_new_dataset.png",
 	help="path to output loss/accuracy plot")
 ap.add_argument("-m", "--model", type=str,
-	default="mask_detector_keras.model",
+	default="mask_detector_keras_new_dataset.model",
 	help="path to output face mask detector model")
 args = vars(ap.parse_args())
 
