@@ -118,11 +118,42 @@ def mask_detection_video(input_video_path, output_video_path, face_detector="fac
     # vid.release()
     cv2.destroyAllWindows()
 
-
-input_video_path = "input_videos/both.mp4"
-output_video_path = 'output_videos/test.avi'
-
-mask_detection_video(input_video_path, output_video_path)            
+def mask_detection_image(frame, face_detector="face_detector", model="mask_detector_keras_new_dataset.model"):
+    print("[INFO] loading face detector model")
+    prototxtPath = os.path.sep.join([face_detector, "deploy.prototxt"])
+    weightsPath = os.path.sep.join([face_detector,
+                                    "res10_300x300_ssd_iter_140000.caffemodel"])
+    faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
+    #frame = cv2.imread(frame)
     
+    print("[INFO] loading face mask detector model")
+    maskNet = load_model(model)
+    frame = imutils.resize(frame, width = 400)
     
+    (locs, preds) = detect_and_predict_mask(frame, faceNet, maskNet)
+    if locs == None and preds == None:
+        return
+    
+    for (box, pred) in zip(locs, preds):
+        (startX, startY, endX, endY) = box
+        (mask, withoutMask) = pred
+        label = "Mask" if mask > withoutMask else "No Mask"
+        color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+            
+        label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
+        
+        cv2.putText(frame, label, (startX, startY - 10),
+                        cv2.FONT_HERSHEY_DUPLEX, 0.45, color, 2)
+        cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
+        
+        cv2.imwrite("output_images/test.jpg", frame)
+    
+
+
+# input_video_path = "input_videos/both.mp4"
+# output_video_path = 'output_videos/test.avi'
+# input_image_path = "input_images/noMask.jpg"
+
+# mask_detection_video(input_video_path, output_video_path)            
+# mask_detection_image(input_image_path)
             
