@@ -1,0 +1,94 @@
+* {box-sizing: border-box}
+
+/* Style the heading */
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Set height of body and the document to 100% */
+html, body {
+    height: 95%;
+}
+
+/* Set the style of the grid that holds video grids */
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    border: 1px solid black;
+    height: 95%;
+}
+
+/* Style the grids that hold videos */
+.grid-item {
+    border: 1px solid black;
+    text-align: center;
+}
+
+/* Style the videos in Monitor tab */
+.vid {
+    width: 350px;
+    height: 220px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Style tab links */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 25%;
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+color: white;
+display: none;
+padding: 100px 20px;
+height: 100%;
+}
+#Home {background-color: purple;}
+#Monitor {background-color: green;}
+#Dashboard {background-color: blue;}
+#About {background-color: royalblue;}
+#Technology {background-color:saddlebrown;}
+
+img {
+    float: center;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+a {
+    background-color: #3D54E5;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    width: 24.5%;
+}
+
+.home-table {
+    border: 1px solid black;
+}
