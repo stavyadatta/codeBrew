@@ -118,7 +118,8 @@ def mask_detection_video(input_video_path, output_video_path, face_detector="fac
     # vid.release()
     cv2.destroyAllWindows()
 
-def mask_detection_image(frame, face_detector="face_detector", model="models/mask_detector.model"):
+def mask_detection_image(frame, face_detector="face_detector", model="mask_detector_keras_new_dataset.model"):
+
     print("[INFO] loading face detector model")
     prototxtPath = os.path.sep.join([face_detector, "deploy.prototxt"])
     weightsPath = os.path.sep.join([face_detector,
@@ -145,9 +146,11 @@ def mask_detection_image(frame, face_detector="face_detector", model="models/mas
         cv2.putText(frame, label, (startX, startY - 10),
                         cv2.FONT_HERSHEY_DUPLEX, 0.45, color, 2)
         cv2.rectangle(frame, (startX, startY), (endX, endY), color, 2)
+        
+        cv2.imwrite("output_images/test.jpg", frame)
     return frame 
         
-       # cv2.imwrite("output_images/test.jpg", frame)
+      
     
 
 
@@ -157,4 +160,3 @@ def mask_detection_image(frame, face_detector="face_detector", model="models/mas
 
 # mask_detection_video(input_video_path, output_video_path)            
 # mask_detection_image(input_image_path)
-            

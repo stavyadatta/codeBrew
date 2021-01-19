@@ -1,2 +1,9 @@
 dataset/
 examples/
+.vscode/
+pyimagesearch/
+train_mask_detector1.py
+output_videos/
+new_dataset/
+input_images/
+output_images/
